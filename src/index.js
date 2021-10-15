@@ -41,7 +41,6 @@ fetch(
   .then((data) => {
     console.log(data)
     const { scatterPoints, confidenceEllipsePolygonCoords } = data;
-
     chart.setTitle(`Scatter chart (${(data.scatterPoints.length / 10 ** 6).toFixed(
       1,
   )} million points) + confidence Ellipse`)
