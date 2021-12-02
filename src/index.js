@@ -35,7 +35,7 @@ const polygonSeries = chart
 // Fetch example data from JSON asset.
 fetch(
   document.head.baseURI +
-    "examples/assets/lcjs_example_0016_largeScatterChartXY-data-largeScatterChartXY.json"
+    "examples/assets/0016/data-largeScatterChartXY.json"
 )
   .then((r) => r.json())
   .then((data) => {
