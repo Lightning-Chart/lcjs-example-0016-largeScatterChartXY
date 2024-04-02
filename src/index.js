@@ -16,21 +16,21 @@ const chart = lightningChart()
 
 // Create point series for visualizing scatter points.
 const pointSeries = chart
-  .addPointSeries({ pointShape: PointShape.Square })
-  .setPointSize(1)
-  // NOTE: This disables data cursor from interacting with this series.
-  // Data cursor does not perform well with scatter charts in millions of data points range.
-  .setCursorEnabled(false)
-  .setName("Scatter series");
+    .addPointSeries({ pointShape: PointShape.Square })
+    .setPointSize(1)
+    // NOTE: This disables data cursor from interacting with this series.
+    // Data cursor does not perform well with scatter charts in millions of data points range.
+    .setCursorEnabled(false)
+    .setName('Scatter series')
 
 // Visualize confidence ellipse with polygon series.
 // Note, routine for calculation of confidence ellipse coordinates from scatter data set is not currently included in LightningChart JS!
-const polygonSeries = chart
-  .addPolygonSeries()
-  .setCursorEnabled(false);
+const polygonSeries = chart.addPolygonSeries().setCursorEnabled(false)
 
 // Fetch example data from JSON asset.
-fetch(document.head.baseURI + 'examples/assets/0016/data-largeScatterChartXY.json')
+fetch(
+    new URL(document.head.baseURI).origin + new URL(document.head.baseURI).pathname + 'examples/assets/0016/data-largeScatterChartXY.json',
+)
     .then((r) => r.json())
     .then((data) => {
         console.log(data)
