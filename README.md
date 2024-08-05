@@ -43,6 +43,15 @@ This takes about 100 milliseconds to load and will immediately be interactable w
 
 The maximum possible Scatter chart size scales well with used hardware, especially RAM (memory) and GPU (graphics card) - On average office PC, LC JS can handle more than hundred million data points.
 
+## Custom cursors
+
+This example also showcases a custom HTML based data cursor.
+The reason for this is that rendering a large scatter chart is extremely heavy.
+For performance reasons it is best to separate the data cursor rendering from the chart.
+This is very easy to do using the `setCustomCursor` API.
+
+Additionally by selecting `show-pointed` cursor mode, you can get lightning fast auto cursor functionality no matter how massive your scatter data set is!
+
 
 ## API Links
 
@@ -77,12 +86,12 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © LightningChart Ltd 2009-2022. All rights reserved.
 
 
-[Lightning chart]: https://lightningchart.com/js-charts/api-documentation/v5.2.0/functions/lightningChart-1.html
-[Color factory CSS]: https://lightningchart.com/js-charts/api-documentation/v5.2.0/functions/ColorCSS.html
-[2D Point shape options]: https://lightningchart.com/js-charts/api-documentation/v5.2.0/enums/PointShape.html
-[Solid line style]: https://lightningchart.com/js-charts/api-documentation/v5.2.0/classes/SolidLine.html
-[Solid fill style]: https://lightningchart.com/js-charts/api-documentation/v5.2.0/classes/SolidFill.html
-[Chart XY]: https://lightningchart.com/js-charts/api-documentation/v5.2.0/classes/ChartXY.html
-[Point Series 2D]: https://lightningchart.com/js-charts/api-documentation/v5.2.0/classes/PointSeries.html
-[Polygon Series 2D]: https://lightningchart.com/js-charts/api-documentation/v5.2.0/classes/PolygonSeries.html
+[Lightning chart]: https://lightningchart.com/js-charts/api-documentation/v6.0.0/functions/lightningChart-1.html
+[Color factory CSS]: https://lightningchart.com/js-charts/api-documentation/v6.0.0/functions/ColorCSS.html
+[2D Point shape options]: https://lightningchart.com/js-charts/api-documentation/v6.0.0/enums/PointShape.html
+[Solid line style]: https://lightningchart.com/js-charts/api-documentation/v6.0.0/classes/SolidLine.html
+[Solid fill style]: https://lightningchart.com/js-charts/api-documentation/v6.0.0/classes/SolidFill.html
+[Chart XY]: https://lightningchart.com/js-charts/api-documentation/v6.0.0/classes/ChartXY.html
+[Point Series 2D]: https://lightningchart.com/js-charts/api-documentation/v6.0.0/classes/PointSeries.html
+[Polygon Series 2D]: https://lightningchart.com/js-charts/api-documentation/v6.0.0/classes/PolygonSeries.html
 

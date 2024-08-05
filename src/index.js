@@ -2,10 +2,10 @@
  * LightningChartJS example that showcases visualization of large XY scatter chart.
  */
 // Import LightningChartJS
-const lcjs = require('@arction/lcjs')
+const lcjs = require('@lightningchart/lcjs')
 
 // Extract required parts from LightningChartJS.
-const { lightningChart, PointShape, ColorCSS, SolidLine, SolidFill, Themes } = lcjs
+const { lightningChart, PointShape, emptyLine, ColorCSS, SolidLine, SolidFill, Themes } = lcjs
 
 // Create chart and series.
 const chart = lightningChart({
@@ -17,17 +17,11 @@ const chart = lightningChart({
     .setTitle('')
 
 // Create point series for visualizing scatter points.
-const pointSeries = chart
-    .addPointSeries({ pointShape: PointShape.Square })
-    .setPointSize(1)
-    // NOTE: This disables data cursor from interacting with this series.
-    // Data cursor does not perform well with scatter charts in millions of data points range.
-    .setCursorEnabled(false)
-    .setName('Scatter series')
+const pointSeries = chart.addPointLineAreaSeries({ dataPattern: null }).setStrokeStyle(emptyLine).setPointSize(1).setName('Scatter series')
 
 // Visualize confidence ellipse with polygon series.
 // Note, routine for calculation of confidence ellipse coordinates from scatter data set is not currently included in LightningChart JS!
-const polygonSeries = chart.addPolygonSeries().setCursorEnabled(false)
+const polygonSeries = chart.addPolygonSeries().setCursorEnabled(false).setMouseInteractions(false)
 
 // Fetch example data from JSON asset.
 fetch(
@@ -35,7 +29,6 @@ fetch(
 )
     .then((r) => r.json())
     .then((data) => {
-        console.log(data)
         const { scatterPoints, confidenceEllipsePolygonCoords } = data
         chart.setTitle(`Scatter chart (${(data.scatterPoints.length / 10 ** 6).toFixed(1)} million points) + confidence Ellipse`)
 
@@ -51,3 +44,37 @@ fetch(
                 }),
             )
     })
+
+// Example of separating data cursor from LCJS rendering. This can enable smooth cursor interactions even over extremely heavy series, such as massive point clouds
+// Essentially the idea is to:
+//  - disable any functionality that results in chart re-rendering in normal auto cursor interactions (highlighting on hover basically)
+//  - set cursor mode to show pointed data point, instead of finding nearest data point
+//  - use custom cursor to display cursor in some other way that doesn't require chart to re-render
+pointSeries.setHighlightOnHover(false)
+chart.setCursorMode('show-pointed').setCustomCursor((_, hit, hits, mouseLocation) => {
+    if (hit) {
+        customResultTable.style.opacity = '1.0'
+        customResultTable.style.left = `${mouseLocation.clientX}px`
+        customResultTable.style.top = `${mouseLocation.clientY}px`
+        customResultTable.innerHTML = `${hit.series.getName()}<br/>X: ${hit.axisX.formatValue(hit.x)}<br/>Y: ${hit.axisY.formatValue(
+            hit.y,
+        )}`
+    } else {
+        customResultTable.style.opacity = '0.0'
+    }
+})
+
+const theme = chart.getTheme()
+const customResultTable = document.createElement('div')
+document.body.append(customResultTable)
+customResultTable.style.position = 'absolute'
+customResultTable.style.pointerEvents = 'none'
+customResultTable.style.transition = 'opacity 0.5s'
+customResultTable.style.backgroundColor = theme.isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)'
+customResultTable.style.color = theme.isDark ? 'rgba(255,255,255)' : 'rgba(0,0,0)'
+customResultTable.style.fontFamily = 'Segoe UI'
+customResultTable.style.fontSize = '14px'
+customResultTable.style.padding = '5px'
+customResultTable.style.borderRadius = '3px'
+customResultTable.style.boxSizing = 'border-box'
+customResultTable.style.transform = 'translateY(-100%)'
