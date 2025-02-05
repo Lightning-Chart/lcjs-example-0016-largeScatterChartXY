@@ -21,7 +21,7 @@ const pointSeries = chart.addPointLineAreaSeries({ dataPattern: null }).setStrok
 
 // Visualize confidence ellipse with polygon series.
 // Note, routine for calculation of confidence ellipse coordinates from scatter data set is not currently included in LightningChart JS!
-const polygonSeries = chart.addPolygonSeries().setCursorEnabled(false).setMouseInteractions(false)
+const polygonSeries = chart.addPolygonSeries().setCursorEnabled(false).setPointerEvents(false)
 
 // Fetch example data from JSON asset.
 fetch(
