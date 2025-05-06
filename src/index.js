@@ -51,7 +51,8 @@ fetch(
 //  - set cursor mode to show pointed data point, instead of finding nearest data point
 //  - use custom cursor to display cursor in some other way that doesn't require chart to re-render
 pointSeries.setHighlightOnHover(false)
-chart.setCursorMode('show-pointed').setCustomCursor((_, hit, hits, mouseLocation) => {
+chart.setCursorMode('show-pointed').setCustomCursor((event) => {
+    const { hit, mouseLocation } = event
     if (hit) {
         customResultTable.style.opacity = '1.0'
         customResultTable.style.left = `${mouseLocation.clientX}px`
