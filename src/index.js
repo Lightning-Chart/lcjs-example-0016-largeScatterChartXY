@@ -18,7 +18,9 @@ const chart = lightningChart({
     .setTitle('')
 
 // Create point series for visualizing scatter points.
-const pointSeries = chart.addPointSeries().setPointSize(1).setName('Scatter series').setPointStrokeStyle(emptyLine)
+const pointSeries = chart.addPointSeries(
+    { automaticColorIndex: 1 },
+).setPointSize(1).setName('Scatter series').setPointStrokeStyle(emptyLine)
 
 // Visualize confidence ellipse with polygon series.
 // Note, routine for calculation of confidence ellipse coordinates from scatter data set is not currently included in LightningChart JS!
@@ -40,7 +42,7 @@ fetch(
             .setFillStyle(new SolidFill({ color: ColorCSS('gray').setA(30) }))
             .setStrokeStyle(
                 new SolidLine({
-                    thickness: 1,
+                    thickness: 2,
                     fillStyle: new SolidFill({ color: ColorCSS('white') }),
                 }),
             )
