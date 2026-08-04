@@ -31,7 +31,7 @@ Here's how simple the creation of a million points scatter chart is with LC JS:
 
 ```js
 const chart = lightningChart().ChartXY()
-const series = chart.addPointSeries().add(
+const series = chart.addPointSeries().appendJSON(
     new Array(1000000).fill().map((_) => ({
         x: Math.random(),
         y: Math.random(),
@@ -86,12 +86,12 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © LightningChart Ltd 2009-2026. All rights reserved.
 
 
-[Lightning chart]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/functions/lightningChart-1.html
-[Color factory CSS]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/functions/ColorCSS.html
-[2D Point shape options]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/enums/PointShape.html
-[Solid line style]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/SolidLine.html
-[Solid fill style]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/SolidFill.html
-[Chart XY]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/ChartXY.html
-[Point Series 2D]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/PointLineAreaSeries.html
-[Polygon Series 2D]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/PolygonSeries.html
+[Lightning chart]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/functions/lightningChart-1.html
+[Color factory CSS]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/functions/ColorCSS.html
+[2D Point shape options]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/enums/PointShape.html
+[Solid line style]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/classes/SolidLine.html
+[Solid fill style]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/classes/SolidFill.html
+[Chart XY]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/classes/ChartXY.html
+[Point Series 2D]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/classes/PointLineAreaSeries.html
+[Polygon Series 2D]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/classes/PolygonSeries.html
 
